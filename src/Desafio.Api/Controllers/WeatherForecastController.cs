@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace Desafio.Api.Controllers
+namespace Desafio.CleanApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]

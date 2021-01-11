@@ -1,6 +1,6 @@
 using System;
 
-namespace Desafio.Api
+namespace Desafio.CleanApi
 {
     public class WeatherForecast
     {
