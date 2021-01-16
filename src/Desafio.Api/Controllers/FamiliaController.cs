@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Desafio.Domain.FamiliaDomain.Dtos;
 using Desafio.Domain.FamiliaDomain.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -19,13 +17,30 @@ namespace Desafio.Api.Controllers
             _verificadorDeBeneficioPorFamilia = verificadorDeBeneficioPorFamilia;
         }
 
-        [HttpGet("ObterFamiliasComBeneficio")]
-        public List<FamiliaComBeneficioVerificadoDto> ObterFamiliasComBeneficio()
+        [HttpGet("GetFamiliasComBeneficio")]
+        public List<FamiliaComBeneficioVerificadoDto> GetFamiliasComBeneficio()
         {
-            if (_verificadorDeBeneficioPorFamilia.Verificar())
-                return new List<FamiliaComBeneficioVerificadoDto>();
+            try
+            {
+                return _verificadorDeBeneficioPorFamilia.Verificar();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
-            return null;
+        [HttpPost("PostFamiliasComBeneficio")]
+        public IActionResult PostFamiliasComBeneficio([FromBody] List<FamiliaComBeneficioVerificadoDto> dto)
+        {
+            try
+            {
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
         }
     }
 }

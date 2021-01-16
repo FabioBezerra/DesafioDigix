@@ -1,7 +1,10 @@
-﻿namespace Desafio.Domain.FamiliaDomain.Interfaces.Services
+﻿using Desafio.Domain.FamiliaDomain.Dtos;
+using System.Collections.Generic;
+
+namespace Desafio.Domain.FamiliaDomain.Interfaces.Services
 {
     public interface IVerificadorDeBeneficioPorFamilia
     {
-        bool Verificar();
+        List<FamiliaComBeneficioVerificadoDto> Verificar();
     }
 }
