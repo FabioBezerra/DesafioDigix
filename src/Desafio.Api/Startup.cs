@@ -1,9 +1,11 @@
 using System.Globalization;
 using Desafio.Domain.FamiliaDomain.Interfaces.Services;
 using Desafio.Domain.FamiliaDomain.Services;
+using Desafio.Infra.MockedData.Context;
 using FluentValidation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -22,6 +24,9 @@ namespace Desafio.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<DesafioDbContext>(options =>
+                options.UseSqlServer("DesafioDbConnection", b => b.MigrationsAssembly("Desafio.Infra.MockedData")));
+
             services.AddControllers();
             services.AddSwaggerDocument(config =>
             {
@@ -57,6 +62,7 @@ namespace Desafio.Api
             });
 
             ValidatorOptions.Global.LanguageManager.Culture = new CultureInfo("pt-BR");
+            Infra.MockedData.Startup.RunMigration<DesafioDbContext>(app);
         }
 
         private void ConfigureServicesIoC(IServiceCollection services)

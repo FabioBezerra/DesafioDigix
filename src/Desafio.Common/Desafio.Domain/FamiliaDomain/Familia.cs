@@ -1,4 +1,6 @@
 ﻿using Desafio.Domain.FamiliaDomain.Enums;
+using Desafio.Domain.PessoaDomain;
+using Desafio.Domain.RendaDomain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,11 +9,6 @@ namespace Desafio.Domain.FamiliaDomain
 {
     public class Familia
     {
-        public string Id { get; private set; }
-        public List<Pessoa> Pessoas { get; private set; } = new List<Pessoa>();
-        public List<Renda> Rendas { get; private set; } = new List<Renda>();
-        public StatusDaFamiliaEnum Status { get; private set; }
-
         protected Familia()
         {
         }
@@ -22,6 +19,11 @@ namespace Desafio.Domain.FamiliaDomain
             Rendas = rendas;
             Status = status;
         }
+
+        public string Id { get; private set; }
+        public virtual List<Pessoa> Pessoas { get; private set; } = new List<Pessoa>();
+        public virtual List<Renda> Rendas { get; private set; } = new List<Renda>();
+        public StatusDaFamiliaEnum Status { get; private set; }
 
         public void AdicionarPessoa(Pessoa pessoa)
         {
@@ -38,19 +40,5 @@ namespace Desafio.Domain.FamiliaDomain
 
             Rendas.Add(renda);
         }
-    }
-
-    public class Renda
-    {
-        public string Id { get; private set; }
-        public decimal Valor { get; set; }
-    }
-
-    public class Pessoa
-    {
-        public string Id { get; private set; }
-        public string Nome { get; set; }
-        public TipoDePessoaEnum Tipo { get; set; }
-        public DateTime DataDeNascimento { get; set; }
     }
 }
