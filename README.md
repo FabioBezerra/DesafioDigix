@@ -6,10 +6,10 @@ Comecei a codificação do projeto criando primeiramente as respectivas class li
     -Desafio.Infra.MockedData (responsável pela infraestrutura de acesso a dados)
 
 Lógica e arquitetura utilizadas:
-    Procurei utilizar o design pattern DDD (Domain-driven Design) para facilitar na criação das regras de negócios.
-    Além disso, na minha opnião a utilização do DDD facilita o uso de micro ou mini serviços na API.
-    Também utilizei a arquitetura do tipo repository para o acesso a dados e utilizei a injeção de dependência atravéz do uso de interfaces.
+    -Procurei utilizar o design pattern DDD (Domain-driven Design) para facilitar na criação das regras de negócios.
+    -Além disso, na minha opnião a utilização do DDD facilita o uso de micro ou mini serviços na API.
+    -Também utilizei a arquitetura do tipo repository para o acesso a dados e utilizei a injeção de dependência atravéz do uso de interfaces.
+    -A camada de Infra.MockedData não ficou totalmente pronta, mas dei inicio a criação do contexto através de migrations utilizando a metodologia code-first.
 
-    A camada de Infra.MockedData não ficou totalmente pronta, mas dei inicio a criação do contexto através de migrations utilizando a metodologia code-first.
-
-    Não tive tempo para implementar os testes de unidade, mas mesmo assim criei uma class library para dar inicio aos testes de unidade do domínio.
+Pendências:
+    -Não tive tempo para implementar os testes de unidade, mas mesmo assim, criei uma class library para dar inicio aos testes de unidade do domínio.
